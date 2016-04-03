@@ -7,8 +7,8 @@ namespace Version_1_C
     public class clsPhotograph : clsWork
     {
         private float _width;
-        private float theHeight;
-        private string theType;
+        private float _height;
+        private string _type;
 
         [NonSerialized()]
         private static frmPhotograph photoDialog;
@@ -32,10 +32,10 @@ namespace Version_1_C
             {
                 photoDialog = new frmPhotograph();
             }
-            photoDialog.SetDetails(_Name, theDate, theValue, _width, theHeight, theType);
+            photoDialog.SetDetails(_name, _date, _value, _width, _height, _type);
             if (photoDialog.ShowDialog() == DialogResult.OK)
             {
-                photoDialog.GetDetails(ref _Name, ref theDate, ref theValue, ref _width, ref theHeight, ref theType);
+                photoDialog.GetDetails(ref _name, ref _date, ref _value, ref _width, ref _height, ref _type);
             }
         }
     }
