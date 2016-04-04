@@ -61,9 +61,9 @@ namespace Version_1_C
             }
         }
 
-        public clsArtistList Retrieve()         
+        public static clsArtistList Retrieve()         
         {
-            var lcArtistList = new clsArtistList();
+            clsArtistList lcArtistList;
             try
             {
                 System.IO.FileStream lcFileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
@@ -71,14 +71,16 @@ namespace Version_1_C
                     new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
 
                 lcArtistList = (clsArtistList)lcFormatter.Deserialize(lcFileStream);
-                UpdateDisplay();
                 lcFileStream.Close();
             }
 
             catch (Exception e)
+            
             {
                 MessageBox.Show(e.Message, "File Retrieve Error");
+                lcArtistList = new clsArtistList();
             }
+            return lcArtistList;
         }
     }
 }
