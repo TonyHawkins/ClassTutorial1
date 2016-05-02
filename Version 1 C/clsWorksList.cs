@@ -9,18 +9,18 @@ namespace Version_1_C
     {
         private static clsNameComparer theNameComparer = new clsNameComparer();
         private static clsDateComparer theDateComparer = new clsDateComparer();
-        private byte sortOrder;
+        private byte _SortOrder;
 
         public byte SortOrder
         {
             get
             {
-                return sortOrder;
+                return _SortOrder;
             }
 
             set
             {
-                sortOrder = value;
+                _SortOrder = value;
             }
         }
 

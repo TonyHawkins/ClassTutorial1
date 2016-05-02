@@ -17,12 +17,12 @@ namespace Version_1_C
 
         private clsArtistList _ArtistList;
         private clsWorksList _WorksList;
-        private byte sortOrder; // 0 = Name, 1 = Date
+        private byte _SortOrder; // 0 = Name, 1 = Date
 
         private void UpdateDisplay()
         {
             txtName.Enabled = txtName.Text == "";
-            if (sortOrder == 0)
+            if (_SortOrder == 0)
             {
                 _WorksList.SortByName();
                 rbByName.Checked = true;
@@ -46,7 +46,7 @@ namespace Version_1_C
             txtPhone.Text = prPhone;
             _ArtistList = prArtistList;
             _WorksList = prWorksList;
-            sortOrder = _WorksList.SortOrder;
+            _SortOrder = _WorksList.SortOrder;
             UpdateDisplay();
         }
 
@@ -55,7 +55,7 @@ namespace Version_1_C
             prName = txtName.Text;
             prSpeciality = txtSpeciality.Text;
             prPhone = txtPhone.Text;
-            _WorksList.SortOrder = sortOrder;
+            _WorksList.SortOrder = _SortOrder;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace Version_1_C
 
         private void rbByDate_CheckedChanged(object sender, EventArgs e)
         {
-            sortOrder = Convert.ToByte(rbByDate.Checked);
+            _SortOrder = Convert.ToByte(rbByDate.Checked);
             UpdateDisplay();
         }
 
