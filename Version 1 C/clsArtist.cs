@@ -5,9 +5,9 @@ namespace Version_1_C
     [Serializable()] 
     public class clsArtist
     {
-        private string name;
-        private string speciality;
-        private string phone;
+        private string _name;
+        private string _speciality;
+        private string _phone;
         
         private decimal _totalvalue;
 
@@ -26,17 +26,17 @@ namespace Version_1_C
         
         public void EditDetails()
         {
-            artistDialog.SetDetails(name, speciality, phone, _WorksList, _ArtistList);
+            artistDialog.SetDetails(_name, _speciality, _phone, _WorksList, _ArtistList);
             if (artistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                artistDialog.GetDetails(ref name, ref speciality, ref phone);
+                artistDialog.GetDetails(ref _name, ref _speciality, ref _phone);
                 _totalvalue = _WorksList.GetTotalValue();
             }
         }
 
         public string GetKey()
         {
-            return name;
+            return _name;
         }
 
         public decimal GetWorksValue()
