@@ -11,9 +11,22 @@ namespace Version_1_C
         private string _type;
 
         [NonSerialized()]
-        private static frmPhotograph photoDialog;
+        private static frmPhotograph _PhotoDialog;
 
         public float Width
+        {
+            get
+            {
+                return Width1;
+            }
+
+            set
+            {
+                Width1 = value;
+            }
+        }
+
+        public float Width1
         {
             get
             {
@@ -26,17 +39,37 @@ namespace Version_1_C
             }
         }
 
-        public override void EditDetails()
+        public float Height
         {
-            if (photoDialog == null)
+            get
             {
-                photoDialog = new frmPhotograph();
+                return _height;
             }
-            photoDialog.SetDetails(_name, _date, _value, _width, _height, _type);
-            if (photoDialog.ShowDialog() == DialogResult.OK)
+
+            set
             {
-                photoDialog.GetDetails(ref _name, ref _date, ref _value, ref _width, ref _height, ref _type);
+                _height = value;
             }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return _type;
+            }
+
+            set
+            {
+                _type = value;
+            }
+        }
+
+        public override void EditDetails()
+        { 
+            if (_PhotoDialog == null)
+            _PhotoDialog = new frmPhotograph();
+            _PhotoDialog.SetDetails(this);
         }
     }
 }

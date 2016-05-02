@@ -16,7 +16,7 @@ namespace Version_1_C
         }
 
         private clsArtist _Artist;
-        private clsArtistList _ArtistList;
+   //     private clsArtistList _ArtistList;
         private clsWorksList _WorksList;
         private byte _SortOrder; // 0 = Name, 1 = Date
 
@@ -52,7 +52,7 @@ namespace Version_1_C
             txtName.Text = _Artist.Name;
             txtPhone.Text = _Artist.Phone;
             txtSpeciality.Text = _Artist.Speciality;
-            _ArtistList = _Artist.ArtistList;
+        //    _ArtistList = _Artist.ArtistList;
             _WorksList = _Artist.WorksList;
             _SortOrder = _WorksList.SortOrder;
             UpdateDisplay();
@@ -67,16 +67,6 @@ namespace Version_1_C
 
         }
 
-
-
-  /*      public void GetDetails(ref string prName, ref string prSpeciality, ref string prPhone)
-        {
-            prName = txtName.Text;
-            prSpeciality = txtSpeciality.Text;
-            prPhone = txtPhone.Text;
-            _WorksList.SortOrder = _SortOrder;
-        }
-*/
         private void btnDelete_Click(object sender, EventArgs e)
         {
             _WorksList.DeleteWork(lstWorks.SelectedIndex);
@@ -101,7 +91,7 @@ namespace Version_1_C
         public virtual Boolean isValid()
         {
             if (txtName.Enabled && txtName.Text != "")
-                if (_ArtistList.Contains(txtName.Text))
+                if (_Artist.IsDuplicate(txtName.Text))
                 {
                     MessageBox.Show("Artist with that name already exists!");
                     return false;

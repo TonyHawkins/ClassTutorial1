@@ -91,6 +91,11 @@ namespace Version_1_C
             _ArtistDialog.SetDetails(this);
             _TotalValue = WorksList.GetTotalValue();
             }
+
+        public bool IsDuplicate(string prArtistName)
+        {
+            return _ArtistList.ContainsKey(prArtistName);
+        }
         }
 
   //      public string GetKey()
